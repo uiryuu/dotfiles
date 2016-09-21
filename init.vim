@@ -13,6 +13,9 @@ Plug 'itchyny/calendar.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-expand-region'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+
 call plug#end()
 
 set ruler
@@ -93,4 +96,7 @@ nnoremap <Leader>a :A<CR>
 " Calendar
 nnoremap <Leader>c :Calendar -view=year -split=vertical -width=27<CR>
 nnoremap <Leader>s :Calendar -view=clock<CR>
+
+" deoplete.nvim
+let g:deoplete#enable_at_startup = 1
 
