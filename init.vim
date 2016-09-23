@@ -12,7 +12,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'bcicen/vim-vice'
 Plug 'sonjapeterson/1989.vim'
-Plug 'hhff/SpacegrayEighties.vim'
+Plug 'Justineo/kolor'
 
 " Functions
 Plug 'ervandew/supertab'
@@ -60,20 +60,20 @@ set colorcolumn=81
 " Disable mouse
 set mouse-=a
 
-set list
+" set list
 set listchars=trail:·,tab:»·
 
-colorscheme jellyx
+colorscheme kolor
 set background=dark
 
 
 let mapleader=","
 
-nmap <Leader>z :bo sp term://zsh\|resize 8<CR>i
-nmap <Leader>f :bo sp term://fish\|resize 8<CR>i
-nmap <Leader>b :bo sp term://bash\|resize 8<CR>i
-nmap <Leader>p :bo sp term://python\|resize 10<CR>i
-nmap <Leader>y :bo sp term://python3\|resize 10<CR>i
+nnoremap <Leader>z :bo sp term://zsh\|resize 8<CR>i
+nnoremap <Leader>f :bo sp term://fish\|resize 8<CR>i
+nnoremap <Leader>b :bo sp term://bash\|resize 8<CR>i
+nnoremap <Leader>p :bo sp term://python\|resize 10<CR>i
+nnoremap <Leader>y :bo sp term://python3\|resize 10<CR>i
 if has('nvim')
 	tnoremap <C-[> <C-\><C-n>
 endif
@@ -103,11 +103,9 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 
 " Turn off search highlight after each search
-map <C-n> :nohl<CR>
+nnoremap <C-n> :nohl<CR>
 
-" Buffer
-nnoremap ., :bp<CR>
-nnoremap ,. :bn<CR>
+nnoremap <C-u> <esc>gUiwea
 
 " Airline
 let g:airline_theme="kolor"
@@ -115,9 +113,6 @@ let g:airline_theme="kolor"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 0
-
-" vim-indent-guides
-set ts=4 sw=4 noet
 
 " Ctrl-p
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
@@ -137,6 +132,9 @@ nnoremap <Leader>s :Calendar -view=clock<CR>
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" numbers
+let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree', 'term', 'vimshell']
 
 """""""""""""""
 
