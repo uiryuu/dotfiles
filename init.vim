@@ -1,9 +1,12 @@
+set nocompatible
+
 call plug#begin('~/.config/nvim/plugged')
 
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+Plug 'myusuf3/numbers.vim'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
@@ -20,7 +23,12 @@ Plug 'majutsushi/tagbar'
 Plug 'a.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
+Plug 'scrooloose/nerdtree'
+
+" Highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " Auto Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -80,6 +88,8 @@ nnoremap <Leader>6 :buffer 6<CR>
 nnoremap <Leader>7 :buffer 7<CR>
 nnoremap <Leader>8 :buffer 8<CR>
 nnoremap <Leader>9 :buffer 9<CR>
+nnoremap <tab> :bn<CR>
+nnoremap <S-tab> :bp<CR>
 
 nnoremap H <C-w>h
 nnoremap J <C-w>j
@@ -113,7 +123,10 @@ set ts=4 sw=4 noet
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 
 " Tagbar
-nmap <leader>t :TagbarToggle<CR>
+nmap <Leader>t :TagbarToggle<CR>
+
+" Nerdtree
+nmap <Leader>n :NERDTreeToggle<CR>
 
 " A.vim
 nnoremap <Leader>a :A<CR>
@@ -124,4 +137,9 @@ nnoremap <Leader>s :Calendar -view=clock<CR>
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""
+
+" autocmd
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
