@@ -1,8 +1,17 @@
 call plug#begin('~/.config/nvim/plugged')
 
+" Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+
+" Colorchemes
 Plug 'flazz/vim-colorschemes'
+Plug 'bcicen/vim-vice'
+Plug 'sonjapeterson/1989.vim'
+Plug 'hhff/SpacegrayEighties.vim'
+
+" Functions
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
@@ -13,6 +22,7 @@ Plug 'itchyny/calendar.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-expand-region'
 
+" Auto Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 
@@ -37,16 +47,28 @@ set shiftwidth=4
 set noexpandtab
 set clipboard+=unnamed
 
+set colorcolumn=81
+
 " Disable mouse
 set mouse-=a
 
 set list
 set listchars=trail:·,tab:»·
 
-colorscheme hybrid
+colorscheme jellyx
 set background=dark
 
+
 let mapleader=","
+
+nmap <Leader>z :bo sp term://zsh\|resize 8<CR>i
+nmap <Leader>f :bo sp term://fish\|resize 8<CR>i
+nmap <Leader>b :bo sp term://bash\|resize 8<CR>i
+nmap <Leader>p :bo sp term://python\|resize 10<CR>i
+nmap <Leader>y :bo sp term://python3\|resize 10<CR>i
+if has('nvim')
+	tnoremap <C-[> <C-\><C-n>
+endif
 
 nnoremap <Leader>w :bd<CR>
 nnoremap <Leader>1 :buffer 1<CR>
@@ -78,11 +100,14 @@ nnoremap ., :bp<CR>
 nnoremap ,. :bn<CR>
 
 " Airline
-let g:airline_theme="dark"
+let g:airline_theme="kolor"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 0
+
+" vim-indent-guides
+set ts=4 sw=4 noet
 
 " Ctrl-p
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
