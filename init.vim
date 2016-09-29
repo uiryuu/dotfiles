@@ -4,15 +4,17 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'myusuf3/numbers.vim'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bcicen/vim-vice'
 Plug 'sonjapeterson/1989.vim'
 Plug 'Justineo/kolor'
+
+Plug 'c9s/colorselector.vim'
 
 " Functions
 Plug 'ervandew/supertab'
@@ -26,6 +28,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
 Plug 'scrooloose/nerdtree'
+Plug 'rizzatti/dash.vim'
 
 " Highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -88,8 +91,8 @@ nnoremap <Leader>6 :buffer 6<CR>
 nnoremap <Leader>7 :buffer 7<CR>
 nnoremap <Leader>8 :buffer 8<CR>
 nnoremap <Leader>9 :buffer 9<CR>
-nnoremap <tab> :bn<CR>
-nnoremap <S-tab> :bp<CR>
+noremap <tab> :bn<CR>
+noremap <S-tab> :bp<CR>
 
 nnoremap H <C-w>h
 nnoremap J <C-w>j
@@ -115,7 +118,13 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 0
 
 " Ctrl-p
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+	\ }
 
 " Tagbar
 nmap <Leader>t :TagbarToggle<CR>
@@ -134,10 +143,8 @@ nnoremap <Leader>s :Calendar -view=clock<CR>
 let g:deoplete#enable_at_startup = 1
 
 " numbers
-let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree', 'term', 'vimshell']
+let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree', 'term://*', 'vimshell']
 
-"""""""""""""""
-
-" autocmd
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" SuperTab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
