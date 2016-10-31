@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance
 Plug 'vim-airline/vim-airline'
-Plug 'Yggdroot/indentLine'
 Plug 'myusuf3/numbers.vim'
 
 " Colorchemes
@@ -76,7 +75,7 @@ nnoremap <Leader>z :bo sp term://zsh\|resize 8<CR>i
 nnoremap <Leader>f :bo sp term://fish\|resize 8<CR>i
 nnoremap <Leader>b :bo sp term://bash\|resize 8<CR>i
 nnoremap <Leader>p :bo sp term://python\|resize 10<CR>i
-nnoremap <Leader>y :bo sp term://python3\|resize 10<CR>i
+nnoremap <Leader>i :bo sp term://ipython3\|resize 10<CR>i
 if has('nvim')
 	tnoremap <C-[> <C-\><C-n>
 endif
