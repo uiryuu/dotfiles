@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance
 Plug 'vim-airline/vim-airline'
-Plug 'myusuf3/numbers.vim'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
@@ -28,6 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
 Plug 'scrooloose/nerdtree'
 Plug 'rizzatti/dash.vim'
+Plug 'klen/python-mode'
 
 " Highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -80,6 +80,11 @@ if has('nvim')
 	tnoremap <C-[> <C-\><C-n>
 endif
 
+nnoremap H <C-w>h
+nnoremap J <C-w>j
+nnoremap K <C-w>k
+nnoremap L <C-w>l
+
 nnoremap <Leader>w :bd<CR>
 nnoremap <Leader>1 :buffer 1<CR>
 nnoremap <Leader>2 :buffer 2<CR>
@@ -93,11 +98,6 @@ nnoremap <Leader>9 :buffer 9<CR>
 noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
 
-nnoremap H <C-w>h
-nnoremap J <C-w>j
-nnoremap K <C-w>k
-nnoremap L <C-w>l
-
 " Disable navigation keys
 noremap <Left> <Nop>
 noremap <Right> <Nop>
@@ -107,14 +107,14 @@ noremap <Down> <Nop>
 " Turn off search highlight after each search
 nnoremap <C-n> :nohl<CR>
 
-nnoremap <C-u> <esc>gUiwea
+nnoremap <C-u> <esc>gUiw
 
 " Airline
 let g:airline_theme="kolor"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " Ctrl-p
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -141,9 +141,10 @@ nnoremap <Leader>s :Calendar -view=clock<CR>
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
-" numbers
-let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree', 'term://*', 'vimshell']
-
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" vim-latex
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
 
