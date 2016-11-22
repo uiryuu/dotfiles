@@ -12,8 +12,6 @@ Plug 'bcicen/vim-vice'
 Plug 'sonjapeterson/1989.vim'
 Plug 'Justineo/kolor'
 
-Plug 'c9s/colorselector.vim'
-
 " Functions
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
