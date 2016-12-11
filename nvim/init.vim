@@ -25,7 +25,6 @@ Plug 'tpope/vim-surround'
 Plug 'terryma/vim-expand-region'
 Plug 'scrooloose/nerdtree'
 Plug 'rizzatti/dash.vim'
-Plug 'klen/python-mode'
 
 " Highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -65,6 +64,8 @@ set listchars=trail:·,tab:»·
 
 colorscheme kolor
 set background=dark
+
+set inccommand=split
 
 
 let mapleader=","
@@ -145,4 +146,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " vim-latex
 autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a Preview'
+
+" Suptertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
