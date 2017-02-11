@@ -18,7 +18,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'a.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -129,9 +128,6 @@ nmap <Leader>t :TagbarToggle<CR>
 
 " Nerdtree
 nmap <Leader>n :NERDTreeToggle<CR>
-
-" A.vim
-nnoremap <Leader>a :A<CR>
 
 " Calendar
 nnoremap <Leader>c :Calendar -view=year -split=vertical -width=27<CR>
