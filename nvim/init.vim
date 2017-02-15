@@ -27,6 +27,7 @@ Plug 'rizzatti/dash.vim'
 
 " Highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'keith/swift.vim'
 
 " Auto Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
