@@ -35,14 +35,15 @@ Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
+syntax on
+filetype on
+
 set ruler
 set number
-syntax on
 set autoindent
 set autoread
 set smartindent
 set showmatch
-filetype on
 set cursorline
 set scrolloff=7
 set completeopt=menu
@@ -66,7 +67,6 @@ colorscheme kolor
 set background=dark
 
 set inccommand=split
-
 
 let mapleader=","
 
@@ -93,10 +93,22 @@ nnoremap <tab> :bn<CR>
 nnoremap <S-tab> :bp<CR>
 
 " Disable navigation keys
-noremap <Left> <C-w>h
-noremap <Down> <C-w>j
-noremap <Up> <C-w>k
-noremap <Right> <C-w>l
+nnoremap <Left> <C-w>h
+nnoremap <Down> <C-w>j
+nnoremap <Up> <C-w>k
+nnoremap <Right> <C-w>l
+
+inoremap <Left> <esc><C-w>h
+inoremap <Down> <esc><C-w>j
+inoremap <Up> <esc><C-w>k
+inoremap <Right> <esc><C-w>l
+
+if has('nvim')
+	tnoremap <Left> <C-\><C-n><C-w>h
+	tnoremap <Down> <C-\><C-n><C-w>j
+	tnoremap <Up> <C-\><C-n><C-w>k
+	tnoremap <Right> <C-\><C-n><C-w>l
+endif
 
 " Turn off search highlight after each search
 nnoremap <C-n> :nohl<CR>
@@ -120,10 +132,10 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 " Tagbar
-nmap <Leader>t :TagbarToggle<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 
 " Nerdtree
-nmap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Calendar
 nnoremap <Leader>c :Calendar -view=year -split=vertical -width=27<CR>
