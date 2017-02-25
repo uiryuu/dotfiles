@@ -79,11 +79,6 @@ if has('nvim')
 	tnoremap <C-[> <C-\><C-n>
 endif
 
-nnoremap H <C-w>h
-nnoremap J <C-w>j
-nnoremap K <C-w>k
-nnoremap L <C-w>l
-
 nnoremap <Leader>w :bd<CR>
 nnoremap <Leader>1 :buffer 1<CR>
 nnoremap <Leader>2 :buffer 2<CR>
@@ -94,19 +89,19 @@ nnoremap <Leader>6 :buffer 6<CR>
 nnoremap <Leader>7 :buffer 7<CR>
 nnoremap <Leader>8 :buffer 8<CR>
 nnoremap <Leader>9 :buffer 9<CR>
-noremap <tab> :bn<CR>
-noremap <S-tab> :bp<CR>
+nnoremap <tab> :bn<CR>
+nnoremap <S-tab> :bp<CR>
 
 " Disable navigation keys
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-noremap <Up> <Nop>
-noremap <Down> <Nop>
+noremap <Left> <C-w>h
+noremap <Down> <C-w>j
+noremap <Up> <C-w>k
+noremap <Right> <C-w>l
 
 " Turn off search highlight after each search
 nnoremap <C-n> :nohl<CR>
 
-nnoremap <C-u> <esc>gUiw
+nnoremap <Leader>` <esc>gUiw
 
 " Airline
 let g:airline_theme="kolor"
@@ -143,7 +138,4 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " vim-latex
 autocmd Filetype tex setl updatetime=1
 let g:livepreview_previewer = 'open -a Preview'
-
-" Suptertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
