@@ -4,10 +4,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Appearance
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'bcicen/vim-vice'
 Plug 'sonjapeterson/1989.vim'
 Plug 'Justineo/kolor'
@@ -113,7 +113,7 @@ let g:airline_theme="kolor"
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_powerline_fonts = 0
+let g:airline_symbols_ascii = 1
 
 " Ctrl-p
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
