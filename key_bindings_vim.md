@@ -51,12 +51,22 @@
 ### Normal mode
 
 #### Tagbar
+[Document](https://github.com/majutsushi/tagbar)
 `Leader + t`: Toggle Tagbar.
 
-#### Nerdtree
-`Leader + n`: Toggle Nerdtree.
+#### NERD Tree
+[Document](https://github.com/scrooloose/nerdtree)
+`Leader + n`: Toggle NERD Tree.
 
 #### Calendar
 `Leader + c`: Open Calendar for a month view.
 `Leader + s`: Open Calendar for a clock view (fullscreen).
+
+#### Ctrl-p
+[Document](https://github.com/ctrlpvim/ctrlp.vim)
+`Ctrl + p`: Open Ctrl-p search window.
+
+#### NERD Commenter
+[Document](https://github.com/scrooloose/nerdcommenter)
+`Leader + cc`: Comment current line.
 
