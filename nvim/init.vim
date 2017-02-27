@@ -104,13 +104,6 @@ inoremap <Down> <esc><C-w>j
 inoremap <Up> <esc><C-w>k
 inoremap <Right> <esc><C-w>l
 
-if has('nvim')
-	tnoremap <Left> <C-\><C-n><C-w>h
-	tnoremap <Down> <C-\><C-n><C-w>j
-	tnoremap <Up> <C-\><C-n><C-w>k
-	tnoremap <Right> <C-\><C-n><C-w>l
-endif
-
 " Turn off search highlight after each search
 nnoremap <C-n> :nohl<CR>
 
