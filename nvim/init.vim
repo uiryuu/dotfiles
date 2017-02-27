@@ -71,43 +71,43 @@ set inccommand=split
 
 let mapleader=","
 
-nnoremap <Leader>z :bo sp term://zsh\|resize 8<CR>i
-nnoremap <Leader>f :bo sp term://fish\|resize 8<CR>i
-nnoremap <Leader>b :bo sp term://bash\|resize 8<CR>i
-nnoremap <Leader>p :bo sp term://python\|resize 10<CR>i
-nnoremap <Leader>i :bo sp term://ipython3\|resize 10<CR>i
+nnoremap <silent> <Leader>z :bo sp term://zsh\|resize 8<CR>i
+nnoremap <silent> <Leader>f :bo sp term://fish\|resize 8<CR>i
+nnoremap <silent> <Leader>b :bo sp term://bash\|resize 8<CR>i
+nnoremap <silent> <Leader>p :bo sp term://python\|resize 10<CR>i
+nnoremap <silent> <Leader>i :bo sp term://ipython3\|resize 10<CR>i
 if has('nvim')
-	tnoremap <C-[> <C-\><C-n>
+	tnoremap <silent> <C-[> <C-\><C-n>
 endif
 
-nnoremap <Leader>w :bd<CR>
-nnoremap <Leader>1 :buffer 1<CR>
-nnoremap <Leader>2 :buffer 2<CR>
-nnoremap <Leader>3 :buffer 3<CR>
-nnoremap <Leader>4 :buffer 4<CR>
-nnoremap <Leader>5 :buffer 5<CR>
-nnoremap <Leader>6 :buffer 6<CR>
-nnoremap <Leader>7 :buffer 7<CR>
-nnoremap <Leader>8 :buffer 8<CR>
-nnoremap <Leader>9 :buffer 9<CR>
-nnoremap <tab> :bn<CR>
-nnoremap <S-tab> :bp<CR>
+nnoremap <silent> <Leader>w :bd<CR>
+nnoremap <silent> <Leader>1 :buffer 1<CR>
+nnoremap <silent> <Leader>2 :buffer 2<CR>
+nnoremap <silent> <Leader>3 :buffer 3<CR>
+nnoremap <silent> <Leader>4 :buffer 4<CR>
+nnoremap <silent> <Leader>5 :buffer 5<CR>
+nnoremap <silent> <Leader>6 :buffer 6<CR>
+nnoremap <silent> <Leader>7 :buffer 7<CR>
+nnoremap <silent> <Leader>8 :buffer 8<CR>
+nnoremap <silent> <Leader>9 :buffer 9<CR>
+nnoremap <silent> <tab> :bn<CR>
+nnoremap <silent> <S-tab> :bp<CR>
 
 " Disable navigation keys
-nnoremap <Left> <C-w>h
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
+nnoremap <silent> <Left> <C-w>h
+nnoremap <silent> <Down> <C-w>j
+nnoremap <silent> <Up> <C-w>k
+nnoremap <silent> <Right> <C-w>l
 
-inoremap <Left> <esc><C-w>h
-inoremap <Down> <esc><C-w>j
-inoremap <Up> <esc><C-w>k
-inoremap <Right> <esc><C-w>l
+inoremap <silent> <Left> <esc><C-w>h
+inoremap <silent> <Down> <esc><C-w>j
+inoremap <silent> <Up> <esc><C-w>k
+inoremap <silent> <Right> <esc><C-w>l
 
 " Turn off search highlight after each search
-nnoremap <C-n> :nohl<CR>
+nnoremap <silent> <C-n> :nohl<CR>
 
-nnoremap <Leader>` <esc>gUiw
+nnoremap <silent> <Leader>` <esc>gUiw
 
 " Airline
 let g:airline_theme="kolor"
