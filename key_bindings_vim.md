@@ -39,12 +39,7 @@
 `<Up>`: Focus on upper window.
 `<Down>`: Focus on lower window.
 
-### Terminal mode (neovim only)
-
-`<Left>`: Focus on left window.
-`<Right>`: Focus on right window.
-`<Up>`: Focus on upper window.
-`<Down>`: Focus on lower window.
+### Terminal Mode (neovim only)
 
 ## User defined vim/neovim plugins' behaviors
 
