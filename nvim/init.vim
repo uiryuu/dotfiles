@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
@@ -68,6 +69,8 @@ colorscheme hybrid
 set background=dark
 
 set inccommand=split
+
+set encoding=utf8
 
 let mapleader=","
 
