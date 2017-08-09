@@ -18,14 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'itchyny/calendar.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'terryma/vim-expand-region'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'rizzatti/dash.vim'
-Plug 'scrooloose/nerdcommenter'
 
 " Highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -133,14 +126,6 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 " NERD Tree
 nnoremap <Leader>n :NERDTreeToggle<CR>
-
-" NERD Commenter
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-
-" Calendar
-" nnoremap <Leader>c :Calendar -view=year -split=vertical -width=27<CR>
-nnoremap <Leader>s :Calendar -view=clock<CR>
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
