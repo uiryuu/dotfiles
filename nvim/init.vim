@@ -14,8 +14,8 @@ Plug 'Justineo/kolor'
 
 " Functions
 Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
@@ -30,7 +30,9 @@ Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
+set background=dark
 syntax on
+colorscheme vice
 filetype on
 
 set ruler
@@ -54,12 +56,6 @@ set colorcolumn=81
 " Disable mouse
 set mouse-=a
 
-" set list
-set listchars=trail:·,tab:»·
-
-colorscheme hybrid
-set background=dark
-
 set inccommand=split
 
 set encoding=utf8
@@ -72,7 +68,7 @@ nnoremap <silent> <Leader>b :bo sp term://bash\|resize 8<CR>i
 nnoremap <silent> <Leader>p :bo sp term://python\|resize 10<CR>i
 nnoremap <silent> <Leader>i :bo sp term://ipython3\|resize 10<CR>i
 if has('nvim')
-	tnoremap <silent> <C-[> <C-\><C-n>
+    tnoremap <silent> <C-[> <C-\><C-n>
 endif
 
 nnoremap <silent> <Leader>w :bd<CR>
@@ -85,24 +81,35 @@ nnoremap <silent> <Leader>6 :buffer 6<CR>
 nnoremap <silent> <Leader>7 :buffer 7<CR>
 nnoremap <silent> <Leader>8 :buffer 8<CR>
 nnoremap <silent> <Leader>9 :buffer 9<CR>
-nnoremap <silent> <tab> :bn<CR>
-nnoremap <silent> <S-tab> :bp<CR>
+
+nnoremap <silent> ,, :bp<CR>
+nnoremap <silent> .. :bn<CR>
 
 " Disable navigation keys
-nnoremap <silent> <Left> <C-w>h
-nnoremap <silent> <Down> <C-w>j
-nnoremap <silent> <Up> <C-w>k
-nnoremap <silent> <Right> <C-w>l
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
 
-inoremap <silent> <Left> <esc><C-w>h
-inoremap <silent> <Down> <esc><C-w>j
-inoremap <silent> <Up> <esc><C-w>k
-inoremap <silent> <Right> <esc><C-w>l
+noremap <silent> <C-H> <C-w>h
+noremap <silent> <C-J> <C-w>j
+noremap <silent> <C-K> <C-w>k
+noremap <silent> <C-L> <C-w>l
+
+inoremap <silent> <C-H> <esc><C-w>h
+inoremap <silent> <C-J> <esc><C-w>j
+inoremap <silent> <C-K> <esc><C-w>k
+inoremap <silent> <C-L> <esc><C-w>l
+
+if has('nvim')
+    tnoremap <silent> <C-H> <C-\><C-n><C-w>h
+    tnoremap <silent> <C-J> <C-\><C-n><C-w>j
+    tnoremap <silent> <C-K> <C-\><C-n><C-w>k
+    tnoremap <silent> <C-L> <C-\><C-n><C-w>l
+endif
 
 " Turn off search highlight after each search
 nnoremap <silent> <C-n> :nohl<CR>
-
-nnoremap <silent> <Leader>` <esc>gUiw
 
 " Airline
 let g:airline_theme="kolor"
@@ -116,22 +123,16 @@ let g:airline_powerline_fonts = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-	\ }
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
 
 " Tagbar
 nnoremap <Leader>t :TagbarToggle<CR>
 
-" NERD Tree
-nnoremap <Leader>n :NERDTreeToggle<CR>
-
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " vim-latex
 autocmd Filetype tex setl updatetime=1
