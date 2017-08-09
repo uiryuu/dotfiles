@@ -42,20 +42,19 @@ filetype on
 
 set ruler
 set number
-set autoindent
 set autoread
-set smartindent
 set showmatch
 set cursorline
 set scrolloff=7
 set completeopt=menu
 set hidden
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
 set clipboard+=unnamed
+
+" Indent related
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set colorcolumn=81
 
