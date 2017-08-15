@@ -30,6 +30,8 @@ Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
+language en_US
+
 set background=dark
 syntax on
 colorscheme vice
