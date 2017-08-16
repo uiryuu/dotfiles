@@ -30,39 +30,50 @@ Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
+" Language
 language en_US
 
+" Colors
 set background=dark
-syntax on
 colorscheme vice
-filetype on
+syntax on
 
-set ruler
-set number
-set autoread
-set showmatch
-set cursorline
-set scrolloff=7
-set completeopt=menu
-set hidden
-
-set clipboard+=unnamed
-
-" Indent related
+" Spaces & Tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" UI Config
+set number
+set cursorline
+filetype on
+set showmatch
+set scrolloff=7
+
+" Search
+set incsearch
+set hlsearch
+set inccommand=split
+
+set ruler
+set autoread
+set completeopt=menu
+set hidden
+set clipboard+=unnamed
 set colorcolumn=81
 
 " Disable mouse
 set mouse-=a
 
-set inccommand=split
-
 set encoding=utf8
 
 let mapleader=","
+
+nnoremap gV `[v`]
+
+nnoremap <leader>v :vsp $MYVIMRC<CR>
+
+nnoremap <C-s> :mksession<CR>
 
 nnoremap <silent> <Leader>z :bo sp term://zsh\|resize 8<CR>i
 nnoremap <silent> <Leader>f :bo sp term://fish\|resize 8<CR>i
