@@ -84,7 +84,7 @@ if has('nvim')
     tnoremap <silent> <C-[> <C-\><C-n>
 endif
 
-nnoremap <silent> <Leader>w :bd<CR>
+nnoremap <silent> <Leader>w :bd!<CR>
 nnoremap <silent> <Leader>1 :buffer 1<CR>
 nnoremap <silent> <Leader>2 :buffer 2<CR>
 nnoremap <silent> <Leader>3 :buffer 3<CR>
@@ -103,6 +103,9 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+
+
+nnoremap <leader>c <C-w>c
 
 noremap <silent> <C-H> <C-w>h
 noremap <silent> <C-J> <C-w>j
