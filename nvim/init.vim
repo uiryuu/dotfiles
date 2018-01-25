@@ -30,9 +30,6 @@ Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
-" Language
-language en_US
-
 " Colors
 set background=dark
 colorscheme vice
