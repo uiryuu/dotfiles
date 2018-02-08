@@ -32,7 +32,7 @@ call plug#end()
 
 " Colors
 set background=dark
-colorscheme vice
+colorscheme molokai
 syntax on
 
 " Spaces & Tabs
@@ -72,11 +72,7 @@ nnoremap <leader>v :vsp $MYVIMRC<CR>
 
 nnoremap <C-s> :mksession<CR>
 
-nnoremap <silent> <Leader>z :bo sp term://zsh\|resize 8<CR>i
-nnoremap <silent> <Leader>f :bo sp term://fish\|resize 8<CR>i
 nnoremap <silent> <Leader>b :bo sp term://bash\|resize 8<CR>i
-nnoremap <silent> <Leader>p :bo sp term://python\|resize 10<CR>i
-nnoremap <silent> <Leader>i :bo sp term://ipython3\|resize 10<CR>i
 if has('nvim')
     tnoremap <silent> <C-[> <C-\><C-n>
 endif
@@ -100,7 +96,6 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
-
 
 nnoremap <leader>c <C-w>c
 
@@ -146,8 +141,4 @@ nnoremap <Leader>t :TagbarToggle<CR>
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
-
-" vim-latex
-autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Preview'
 
