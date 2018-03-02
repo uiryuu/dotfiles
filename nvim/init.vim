@@ -8,25 +8,16 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
-Plug 'bcicen/vim-vice'
-Plug 'sonjapeterson/1989.vim'
-Plug 'Justineo/kolor'
 
 " Functions
 Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 
-" Highlighting
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'keith/swift.vim'
-
 " Auto Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
