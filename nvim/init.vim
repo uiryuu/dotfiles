@@ -55,7 +55,7 @@ set mouse-=a
 
 set encoding=utf8
 
-let mapleader=","
+let mapleader=" "
 
 nnoremap gV `[v`]
 
