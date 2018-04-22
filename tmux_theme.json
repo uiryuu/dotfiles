@@ -20,6 +20,10 @@
                 "name": "player"
             },
             {
+                "function": "powerline.segments.common.players.clementine",
+                "name": "player"
+            },
+            {
                 "function": "powerline.segments.common.bat.battery"
             }
         ],
