@@ -110,6 +110,8 @@ endif
 " Turn off search highlight after each search
 nnoremap <silent> <C-n> :nohl<CR>
 
+let g:tex_flavor='latex'
+
 " Airline
 let g:airline_theme="kolor"
 
