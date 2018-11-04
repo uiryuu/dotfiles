@@ -50,9 +50,6 @@ set hidden
 set clipboard+=unnamed
 set colorcolumn=81
 
-" Disable mouse
-set mouse-=a
-
 set encoding=utf8
 
 let mapleader=" "
@@ -89,6 +86,9 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 
 nnoremap <leader>c <C-w>c
+
+nnoremap <leader>\ :vsplit<CR>
+nnoremap <leader>- :split<CR>
 
 noremap <silent> <C-H> <C-w>h
 noremap <silent> <C-J> <C-w>j
