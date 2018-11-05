@@ -56,7 +56,7 @@ let mapleader=" "
 
 nnoremap gV `[v`]
 
-nnoremap <leader>v :vsp $MYVIMRC<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 
 nnoremap <C-s> :mksession<CR>
 
