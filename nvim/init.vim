@@ -9,6 +9,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
 
+Plug 'slim-template/vim-slim'
+Plug 'editorconfig/editorconfig-vim'
+
 " Functions
 Plug 'ervandew/supertab'
 Plug 'airblade/vim-gitgutter'
