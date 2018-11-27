@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Colorchemes
 Plug 'flazz/vim-colorschemes'
 
+" Syntax highlighting
 Plug 'slim-template/vim-slim'
 Plug 'editorconfig/editorconfig-vim'
 
@@ -21,7 +22,13 @@ Plug 'tpope/vim-surround'
 Plug 'ArtBIT/vim-modularvimrc'
 
 " Auto Completion
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 
@@ -41,6 +48,7 @@ set cursorline
 filetype on
 set showmatch
 set scrolloff=7
+set previewheight=20
 
 " Search
 set incsearch
@@ -65,6 +73,7 @@ nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <C-s> :mksession<CR>
 
 nnoremap <silent> <Leader>b :bo sp term://bash\|resize 8<CR>i
+nnoremap <silent> <Leader>f :bo sp term://fish\|resize 8<CR>i
 if has('nvim')
     tnoremap <silent> <C-[> <C-\><C-n>
 endif
@@ -136,6 +145,26 @@ let g:ctrlp_custom_ignore = {
 " Tagbar
 nnoremap <Leader>t :TagbarToggle<CR>
 
+" echodoc.vim
+set cmdheight=2
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+set signcolumn=yes
+set splitbelow
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'cpp': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/Users/alejx/src/.cquery_cache/"}'],
+    \ 'c': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/Users/alejx/src/.cquery_cache/"}'],
+    \ 'ruby': ['tcp://localhost:7658'],
+    \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>d :call LanguageClient#textDocument_definition()<CR>
 
