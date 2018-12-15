@@ -12,6 +12,13 @@ Plug 'flazz/vim-colorschemes'
 " Syntax highlighting
 Plug 'slim-template/vim-slim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'cespare/vim-toml'
+Plug 'toyamarinyon/vim-swift'
+
+" Language support
+Plug 'rust-lang/rust.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-ruby/vim-ruby'
 
 " Functions
 Plug 'ervandew/supertab'
@@ -20,13 +27,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'ArtBIT/vim-modularvimrc'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Auto Completion
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'junegunn/fzf'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 
@@ -48,7 +56,6 @@ set cursorline
 filetype on
 set showmatch
 set scrolloff=7
-set previewheight=20
 
 " Search
 set incsearch
@@ -71,12 +78,6 @@ nnoremap gV `[v`]
 nnoremap <leader>v :e $MYVIMRC<CR>
 
 nnoremap <C-s> :mksession<CR>
-
-nnoremap <silent> <Leader>b :bo sp term://bash\|resize 8<CR>i
-nnoremap <silent> <Leader>f :bo sp term://fish\|resize 8<CR>i
-if has('nvim')
-    tnoremap <silent> <C-[> <C-\><C-n>
-endif
 
 nnoremap <silent> <Leader>w :bd!<CR>
 nnoremap <silent> <Leader>1 :buffer 1<CR>
@@ -127,11 +128,7 @@ let g:tex_flavor='latex'
 
 " Airline
 let g:airline_theme="kolor"
-
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_symbols_ascii = 0
-let g:airline_powerline_fonts = 1
 
 " Ctrl-p
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -139,7 +136,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
     \ 'file': '\v\.(exe|so|dll)$',
-    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
     \ }
 
 " Tagbar
@@ -150,7 +146,6 @@ set cmdheight=2
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 set signcolumn=yes
-set splitbelow
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -164,7 +159,15 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/Users/alejx/src/.cquery_cache/"}'],
     \ 'c': ['cquery', '--log-file=/tmp/cq.log', '--init={"cacheDirectory":"/Users/alejx/src/.cquery_cache/"}'],
     \ 'ruby': ['tcp://localhost:7658'],
+    \ 'swift': ['~/src/sourcekit-lsp/.build/debug/sourcekit-lsp'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>d :call LanguageClient#textDocument_definition()<CR>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_fenced_languages = ['rust=rs']
+
+" NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
 
