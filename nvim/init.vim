@@ -19,6 +19,8 @@ Plug 'toyamarinyon/vim-swift'
 Plug 'rust-lang/rust.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-ruby/vim-ruby'
+Plug 'fatih/vim-go'
+Plug 'prettier/vim-prettier'
 
 " Functions
 Plug 'ervandew/supertab'
@@ -125,6 +127,8 @@ endif
 nnoremap <silent> <C-n> :nohl<CR>
 
 let g:tex_flavor='latex'
+nnoremap <Leader>p :!tectonic main.tex<CR>
+nnoremap <Leader>o :!open main.pdf<CR>
 
 " Airline
 let g:airline_theme="kolor"
@@ -142,7 +146,6 @@ let g:ctrlp_custom_ignore = {
 nnoremap <Leader>t :TagbarToggle<CR>
 
 " echodoc.vim
-set cmdheight=2
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 set signcolumn=yes
