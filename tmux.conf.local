@@ -303,3 +303,7 @@ bind-key C-h resizep -L 2
 bind-key C-j resizep -D 2
 bind-key C-k resizep -U 2
 bind-key C-l resizep -R 2
+
+unbind C-c
+
+set-option -sa terminal-overrides ',xterm-256color:RGB'
