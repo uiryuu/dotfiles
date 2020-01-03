@@ -288,7 +288,7 @@ set-option -sg escape-time 10
 unbind '"'
 unbind '%'
 bind - splitw -v
-bind \ splitw -h
+bind \\ splitw -h
 
 unbind-key h
 unbind-key j
