@@ -5,3 +5,9 @@ fish_vi_key_bindings
 
 status --is-interactive; and source (rbenv init -|psub)
 status --is-interactive; and source (pyenv init -|psub)
+
+if not set -q TMUX
+    set -g TMUX tmux new-session -d -s Chore
+    eval $TMUX
+    tmux attach-session -d -t Chore
+end

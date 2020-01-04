@@ -358,15 +358,15 @@ live_config_reload: true
 #   - (Linux) user login shell
 #   - (Windows) powershell
 #shell:
-#  program: tmux
+#  program: /bin/bash
 #  args:
-#    a -t Chore
+#    - --login
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: None
+#working_directory: None
 
 # Windows 10 ConPTY backend (Windows only)
 #
