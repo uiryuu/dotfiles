@@ -9,5 +9,5 @@ status --is-interactive; and source (pyenv init -|psub)
 if not set -q TMUX
     set -g TMUX tmux new-session -d -s Chore
     eval $TMUX
-    tmux attach-session -d -t Chore
+    tmux attach-session -d
 end
