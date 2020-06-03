@@ -13,3 +13,5 @@
 	program = gpg2
 [push]
 	default = simple
+[pull]
+	rebase = true
