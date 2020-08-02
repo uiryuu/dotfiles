@@ -134,6 +134,7 @@ let g:airline_theme="kolor"
 let g:airline#extensions#tabline#enabled = 1
 
 " Ctrl-p
+let g:ctrlp_working_path_mode = 'r'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 let g:ctrlp_custom_ignore = {
