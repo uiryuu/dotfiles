@@ -1,4 +1,5 @@
 set -x LC_ALL en_US.UTF-8
+set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 set -Ux EDITOR nvim
 fish_vi_key_bindings

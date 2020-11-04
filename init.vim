@@ -25,13 +25,13 @@ Plug 'editorconfig/editorconfig-vim'
 " Plug 'neovim/nvim-lsp'
 
 " Auto Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
 " Settings
 set background=dark
-colorscheme molokai
+colorscheme spacegray
 syntax on
 
 set tabstop=4
