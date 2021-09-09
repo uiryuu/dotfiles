@@ -2,7 +2,7 @@ set -x LC_ALL en_US.UTF-8
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x PATH /opt/homebrew/bin $PATH
 
-alias ibrew='arch x86_64 /usr/local/bin/brew'
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
 
 set -Ux EDITOR nvim
 fish_vi_key_bindings
