@@ -1,11 +1,11 @@
 [user]
 	name = Yuze Jiang
-	email = fortissimoX@gmail.com
-	signingkey = 739AFCE41B3362077DA05B957D7B9FCC9EEE842F
+	email = uiryuu16@gmail.com
+	signingkey = C85C26CCEEAE4A160C8AD032F7AD69C9E612E04B
 [core]
 	editor = nvim
 [commit]
-	gpgsign = false
+	gpgsign = true
 [alias]
 	ls = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	ll = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all

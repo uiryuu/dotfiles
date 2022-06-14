@@ -10,6 +10,11 @@
 ln -sf ~/src/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/src/dotfiles/tmux.conf ~/.tmux.conf
 
+mkdir ~/.config
+mkdir ~/.config/alacritty
+mkdir ~/.config/fish
+mkdir ~/.config/nvim
+
 # under ~/.config
 ln -sf ~/src/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -sf ~/src/dotfiles/config.fish ~/.config/fish/config.fish

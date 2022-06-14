@@ -97,8 +97,11 @@ nnoremap <silent> <C-n> :nohl<CR>
 
 nnoremap <Leader>s :setlocal spell! spelllang=en_us<CR>
 
-nnoremap <Leader>p :!tectonic main.tex<CR>
-nnoremap <leader>o :!open main.pdf<CR><CR>
+nnoremap <Leader>p :!tectonic %<CR>
+nnoremap <leader>o :!open %:r.pdf<CR><CR>
+
+nnoremap <Leader>m :!tectonic main.tex<CR>
+nnoremap <leader>n :!open main.pdf<CR><CR>
 
 nnoremap <Leader>t :TagbarToggle<CR>
 
