@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'lervag/vimtex'
 
 " nvim-lsp
 " Plug 'neovim/nvim-lsp'
@@ -30,17 +31,19 @@ Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Settings
-set background=dark
+filetype plugin indent on
 colorscheme spacegray
-syntax on
+syntax enable
 
+set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set modeline
 
 set number
+set relativenumber
 set cursorline
-filetype on
 set showmatch
 set scrolloff=7
 set splitbelow splitright
@@ -60,7 +63,7 @@ set encoding=utf8
 
 " Key Mappings
 let mapleader=" "
-let localmapleader="\\"
+let maplocalleader=","
 
 " Disabled Mappings
 noremap <Up> <nop>
@@ -93,15 +96,12 @@ nnoremap <leader>c <C-w>c
 nnoremap <leader>j :split<CR>
 nnoremap <leader>k :vsplit<CR>
 
+" close quickfix window
+nnoremap <leader>q :ccl<CR>
+
 nnoremap <silent> <C-n> :nohl<CR>
 
 nnoremap <Leader>s :setlocal spell! spelllang=en_us<CR>
-
-nnoremap <Leader>p :!tectonic %<CR>
-nnoremap <leader>o :!open %:r.pdf<CR><CR>
-
-nnoremap <Leader>m :!tectonic main.tex<CR>
-nnoremap <leader>n :!open main.pdf<CR><CR>
 
 nnoremap <Leader>t :TagbarToggle<CR>
 
@@ -129,6 +129,10 @@ autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 " Disable automatic commenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Automatically set relative number
+autocmd InsertLeave * set relativenumber
+autocmd InsertEnter * set norelativenumber
+
 
 " Plug-in Settings
 
@@ -149,6 +153,11 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" vimtex
+let g:vimtex_view_method = 'skim'
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_toc_config = { 'split_pos': 'vert botright' }
 
 echo ">^.^<"
 

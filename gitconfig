@@ -1,7 +1,7 @@
 [user]
 	name = Yuze Jiang
-	email = uiryuu16@gmail.com
-	signingkey = C85C26CCEEAE4A160C8AD032F7AD69C9E612E04B
+	email = i@uiryuu.moe
+	signingkey = DE35DC785BD79B8630023DA3631851860DA8E942
 [core]
 	editor = nvim
 [commit]

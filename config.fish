@@ -1,7 +1,6 @@
 set -x LC_ALL en_US.UTF-8
 set -x PATH /opt/homebrew/bin $PATH
-
-alias ibrew='arch -x86_64 /usr/local/bin/brew'
+set -x TERM xterm-256color
 
 if status is-interactive
     set -Ux EDITOR nvim
