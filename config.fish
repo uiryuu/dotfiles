@@ -1,5 +1,5 @@
 set -x LC_ALL en_US.UTF-8
-set -x PATH /opt/homebrew/bin $PATH
+set -x PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
 set -x TERM xterm-256color
 
 if status is-interactive
