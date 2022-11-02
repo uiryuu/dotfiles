@@ -4,7 +4,6 @@
 # oh my fish
 # tmux-plugins (tpm)
 # vim-plug
-# alacritty
 
 # under ~/
 ln -sf ~/src/dotfiles/gitconfig ~/.gitconfig
