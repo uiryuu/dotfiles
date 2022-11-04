@@ -8,6 +8,9 @@
 # under ~/
 ln -sf ~/src/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/src/dotfiles/tmux.conf ~/.tmux.conf
+if [ "$(uname)" == "Darwin" ]; then
+    ln -sf ~/src/dotfiles/Brewfile ~/Brewfile
+fi
 
 mkdir ~/.config
 mkdir ~/.config/alacritty

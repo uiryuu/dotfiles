@@ -2,12 +2,14 @@
 tap "homebrew/cask"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 brew "curl"
 brew "wget"
 brew "fish"
 brew "git"
+brew "svn" # for some of the fonts
 brew "gnupg"
 brew "ipython"
 brew "neofetch"
@@ -17,6 +19,7 @@ brew "pyenv"
 brew "rbenv"
 brew "tmux"
 brew "mas"
+brew "yt-dlp"
 
 cask "google-chrome"
 cask "google-drive"
@@ -44,16 +47,19 @@ cask "notion"
 cask "slack"
 cask "coteditor"
 cask "steam"
-cask "yt-dlp"
 cask "utm"
 cask "istat-menus"
 cask "expressvpn"
 cask "sf-symbols"
+cask "dash"
+
+# fonts
+cask "font-source-code-pro"
 
 mas "Keynote", id: 409183694
 mas "Pages", id: 409201541
 mas "Numbers", id: 409203825
-mas "1Password", id: 443987910
+# mas "1Password", id: 443987910
 mas "Microsoft To Do", id: 1274495053
 mas "AdGuard for Safari", id: 1440147259
 mas "1Password for Safari", id: 1569813296
