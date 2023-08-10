@@ -10,6 +10,7 @@ Plug 'flazz/vim-colorschemes'
 
 " Syntax Highlighting & Language Support
 Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
 
 " Functions
 Plug 'ervandew/supertab'
@@ -20,7 +21,6 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'lervag/vimtex'
 
 " nvim-lsp
 " Plug 'neovim/nvim-lsp'
@@ -156,8 +156,5 @@ let g:deoplete#enable_at_startup = 1
 
 " vimtex
 let g:vimtex_view_method = 'skim'
-let g:vimtex_compiler_method = 'latexmk'
-let g:vimtex_toc_config = { 'split_pos': 'vert botright' }
-
-echo ">^.^<"
+let g:vimtex_compiler_method = 'tectonic'
 

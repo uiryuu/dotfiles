@@ -11,15 +11,28 @@ brew "fish"
 brew "git"
 brew "svn" # for some of the fonts
 brew "gnupg"
-brew "ipython"
+brew "gpgme" # JSON inter-process communication for GPG
 brew "neofetch"
 brew "neovim"
 brew "pinentry-mac"
-brew "pyenv"
-brew "rbenv"
 brew "tmux"
 brew "mas"
 brew "yt-dlp"
+brew "mpv"
+brew "ffmpeg"
+brew "meson" # for mpv compilation
+brew "gitui"
+brew "ranger"
+
+# Programming Language Support
+brew "ipython"
+brew "tectonic"
+brew "ctags"
+brew "pyenv"
+brew "rbenv"
+
+# fonts
+cask "font-source-code-pro"
 
 cask "google-chrome"
 cask "google-drive"
@@ -30,7 +43,7 @@ cask "firefox"
 cask "baidunetdisk"
 cask "blender"
 cask "discord"
-cask "gitkraken"
+cask "fork"
 cask "iina"
 cask "keka"
 cask "netnewswire"
@@ -47,14 +60,12 @@ cask "notion"
 cask "slack"
 cask "coteditor"
 cask "steam"
-cask "utm"
 cask "istat-menus"
-cask "expressvpn"
 cask "sf-symbols"
 cask "dash"
-
-# fonts
-cask "font-source-code-pro"
+cask "visual-studio-code"
+cask "mactex"
+cask "hex-fiend"
 
 mas "Keynote", id: 409183694
 mas "Pages", id: 409201541
@@ -66,3 +77,4 @@ mas "1Password for Safari", id: 1569813296
 mas "Deliveries", id: 290986013
 mas "Shazam", id: 897118787
 mas "Speedtest", id: 1153157709
+mas "LINE", id: 539883307

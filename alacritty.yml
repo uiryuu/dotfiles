@@ -270,8 +270,8 @@ bell:
 #
 # All available `mods` and `action` values are documented in the key binding
 # section.
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
+# mouse_bindings:
+# - { mouse: Middle, action: PasteSelection }
 
 mouse:
   # Click settings
@@ -283,7 +283,7 @@ mouse:
   triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: true
+  hide_when_typing: false
 
   hints:
     # URL launcher
@@ -362,9 +362,6 @@ live_config_reload: true
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
 enable_experimental_conpty_backend: false
-
-# Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
 
 debug:
   # Display the time it takes to redraw each frame.
