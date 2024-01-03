@@ -1,0 +1,17 @@
+[font]
+normal.family = "Source Code Pro"
+bold.family = "Source Code Pro"
+italic.family = "Source Code Pro"
+bold_italic.family = "Source Code Pro"
+
+size = 14.0
+
+[window]
+opacity = 0.8
+blur = true
+dimensions = {columns = 150, lines = 40}
+
+decorations_theme_variant = "Dark"
+
+[cursor]
+# style = {shape = "Underline", blinking = "Always"}
