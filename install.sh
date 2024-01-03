@@ -18,7 +18,7 @@ mkdir ~/.config/fish
 mkdir ~/.config/nvim
 
 # under ~/.config
-ln -sf ~/src/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sf ~/src/dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf ~/src/dotfiles/config.fish ~/.config/fish/config.fish
 ln -sf ~/src/dotfiles/init.vim ~/.config/nvim/init.vim
 
