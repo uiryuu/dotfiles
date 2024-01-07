@@ -13,5 +13,9 @@ dimensions = {columns = 150, lines = 40}
 
 decorations_theme_variant = "Dark"
 
+[selection]
+save_to_clipboard = true
+
 [cursor]
-# style = {shape = "Underline", blinking = "Always"}
+# style = {shape = "Beam", blinking = "Never"}
+
