@@ -3,7 +3,7 @@
 # Dependencies
 # oh my fish
 # tmux-plugins (tpm)
-# vim-plug
+# lazy.nvim
 
 # under ~/
 ln -sf ~/src/dotfiles/gitconfig ~/.gitconfig
@@ -20,5 +20,6 @@ mkdir ~/.config/nvim
 # under ~/.config
 ln -sf ~/src/dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf ~/src/dotfiles/config.fish ~/.config/fish/config.fish
-ln -sf ~/src/dotfiles/init.vim ~/.config/nvim/init.vim
+# ln -sf ~/src/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sf ~/src/dotfiles/init.lua ~/.config/nvim/init.lua
 
