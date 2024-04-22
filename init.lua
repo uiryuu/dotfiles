@@ -1,30 +1,124 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		'git',
-		'clone',
-		'--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
 end
 
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
-    { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
-    { 'nvim-neo-tree/neo-tree.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim' }},
-    { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
-    { 'kylechui/nvim-surround', event = 'VeryLazy' },
+    { 'nvim-lualine/lualine.nvim',       dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    { 'nvim-neo-tree/neo-tree.nvim',     dependencies = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim' } },
+    { 'akinsho/bufferline.nvim',         version = '*',                                                     dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'kylechui/nvim-surround',          event = 'VeryLazy' },
+    { 'tpope/vim-commentary' },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    { 'navarasu/onedark.nvim' },
+    { 'neovim/nvim-lspconfig' },
+    { 'romgrk/barbar.nvim' },
+    { 'lewis6991/gitsigns.nvim' },
+    { 'ms-jpq/coq_nvim' },
+    { 'ms-jpq/coq.artifacts' },
+    { 'liuchengxu/vista.vim' },
 }
 
-require('lazy').setup(plugins, {})
-require('lualine').setup()
-require('nvim-surround').setup()
+vim.g.coq_settings = {
+  auto_start = 'shut-up',
+}
 
-vim.cmd.colorscheme 'catppuccin-frappe'
+vim.o.termguicolors = true
+
+require'lazy'.setup(plugins, {})
+
+require'lualine'.setup()
+require'nvim-surround'.setup()
+require'onedark'.load()
+require'onedark'.setup {
+    style = 'warm',
+}
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = 'all',
+    auto_install = true,
+    highlight = {
+        enable = true,
+    },
+}
+require'gitsigns'.setup()
+
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup {
+    on_init = function(client)
+        local path = client.workspace_folders[1].name
+        if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+            return
+        end
+
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+                -- Tell the language server which version of Lua you're using
+                -- (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT'
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME
+                    -- Depending on the usage, you might want to add additional paths here.
+                    -- '${3rd}/luv/library'
+                    -- '${3rd}/busted/library',
+                }
+                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                -- library = vim.api.nvim_get_runtime_file('', true)
+            }
+        })
+    end,
+    settings = {
+        Lua = {}
+    }
+}
+
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<leader>F', function()
+            vim.lsp.buf.format { async = true }
+        end, opts)
+    end,
+})
 
 vim.o.number = true
 vim.o.background = 'dark'
@@ -48,64 +142,33 @@ vim.o.undofile = true
 vim.o.completeopt = 'menu'
 vim.o.hidden = true
 vim.o.clipboard = 'unnamedplus'
-vim.o.colorcolumn = 81
+vim.o.colorcolumn = '81'
 vim.o.encoding = 'utf-8'
-vim.o.showtabline = 2
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<leader>v', ':e $MYVIMRC<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>w', ':bd!<CR>', { noremap = true, silent = true })
+map('n', '<leader>v', '<Cmd>e $MYVIMRC<CR>', opts)
 
-for i = 1, 9 do
-    vim.api.nvim_set_keymap('n', '<Leader>' .. i, ':buffer ' .. i .. '<CR>', { noremap = true, silent = true })
-end
+-- barbar key bindings
+map('n', '<leader>w', '<Cmd>BufferClose<CR>', opts)
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
-vim.api.nvim_set_keymap('n', ',,', ':bp<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '..', ':bn<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>c', '<C-w>c', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>q', ':ccl<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-n>', ':nohlsearch<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>t', ':TagbarToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>n', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-H>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-J>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-K>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-L>', '<C-w>l', { noremap = true, silent = true })
+map('n', ',,', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '..', '<Cmd>BufferNext<CR>', opts)
 
-vim.api.nvim_set_keymap('n', '<leader>f', ':Neotree toggle float filesystem<CR>', { noremap = true, silent = true })
+map('n', '<leader>q', '<Cmd>ccl<CR>', opts)
+map('n', '<C-n>', '<Cmd>nohlsearch<CR>', opts)
 
-local function remove_trailing_whitespace()
-    local save_cursor = vim.api.nvim_win_get_cursor(0)  -- Save cursor position
-    vim.cmd([[ %s/\s\+$//e ]])  -- Remove trailing whitespace
-    vim.api.nvim_win_set_cursor(0, save_cursor)  -- Restore cursor position
-end
+map('n', '<C-H>', '<C-w>h', opts)
+map('n', '<C-J>', '<C-w>j', opts)
+map('n', '<C-K>', '<C-w>k', opts)
+map('n', '<C-L>', '<C-w>l', opts)
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",  -- Applies to all files
-    callback = remove_trailing_whitespace,
-})
+-- Neotree key bindings
 
-local function disable_relative_number()
-    vim.opt.relativenumber = false
-end
+map('n', '<leader>f', '<Cmd>Neotree toggle float filesystem<CR>', opts)
+map('n', '<leader>b', '<Cmd>Neotree toggle float buffers<CR>', opts)
 
-local function enable_relative_number()
-    vim.opt.relativenumber = true
-end
-
-local group = vim.api.nvim_create_augroup("RelativeNumberToggle", { clear = true })
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-    group = group,
-    pattern = "*",
-    callback = enable_relative_number,
-})
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-    group = group,
-    pattern = "*",
-    callback = disable_relative_number,
-})
-
+-- vista.vim key bindings
+map('n', '<leader>t', '<Cmd>Vista!!<CR>', opts)

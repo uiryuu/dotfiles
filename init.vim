@@ -129,11 +129,6 @@ autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 expandtab
 " Disable automatic commenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Automatically set relative number
-autocmd InsertLeave * set relativenumber
-autocmd InsertEnter * set norelativenumber
-
-
 " Plug-in Settings
 
 " Airline
