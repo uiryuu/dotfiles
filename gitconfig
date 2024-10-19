@@ -15,3 +15,5 @@
 	autoSetupRemote = true
 [pull]
 	rebase = true
+[init]
+	defaultBranch = develop

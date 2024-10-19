@@ -26,6 +26,14 @@ local plugins = {
     { 'ms-jpq/coq_nvim' },
     { 'ms-jpq/coq.artifacts' },
     { 'liuchengxu/vista.vim' },
+    { 'slim-template/vim-slim' },
+    {
+      'lervag/vimtex',
+      lazy = false,     -- we don't want to lazy load VimTeX
+      init = function()
+        vim.g.vimtex_compiler_method = 'tectonic'
+      end
+    }
 }
 
 vim.g.coq_settings = {
