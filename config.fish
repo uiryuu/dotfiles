@@ -1,5 +1,5 @@
 set -x LC_ALL en_US.UTF-8
-set -x PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
+set -x PATH /Library/Tex/texbin /opt/homebrew/bin /opt/homebrew/sbin $PATH
 
 set -gx GPG_TTY (tty)
 

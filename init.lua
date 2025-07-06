@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     { 'nvim-lualine/lualine.nvim',       dependencies = { 'nvim-tree/nvim-web-devicons' } },
     { 'nvim-neo-tree/neo-tree.nvim',     dependencies = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim' } },
-    { 'akinsho/bufferline.nvim',         version = '*',                                                     dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'akinsho/bufferline.nvim',         version = '*',                                                                      dependencies = 'nvim-tree/nvim-web-devicons' },
     { 'kylechui/nvim-surround',          event = 'VeryLazy' },
     { 'tpope/vim-commentary' },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
@@ -23,41 +23,81 @@ local plugins = {
     { 'neovim/nvim-lspconfig' },
     { 'romgrk/barbar.nvim' },
     { 'lewis6991/gitsigns.nvim' },
-    { 'ms-jpq/coq_nvim' },
-    { 'ms-jpq/coq.artifacts' },
     { 'liuchengxu/vista.vim' },
-    { 'slim-template/vim-slim' },
+    { 'lervag/vimtex',                   lazy = false },
+    { 'hrsh7th/nvim-cmp',                dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path' } },
+    { 'chentoast/marks.nvim',            event = 'VeryLazy' },
     {
-      'lervag/vimtex',
-      lazy = false,     -- we don't want to lazy load VimTeX
-      init = function()
-        vim.g.vimtex_compiler_method = 'tectonic'
-      end
-    }
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "LspAttach", -- Or `LspAttach`
+        priority = 1000, -- needs to be loaded in first
+        config = function()
+            require('tiny-inline-diagnostic').setup()
+        end
+   }
 }
 
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-}
+vim.diagnostic.config({
+    virtual_lines = false,
+    virtual_text = false,
+})
 
 vim.o.termguicolors = true
 
-require'lazy'.setup(plugins, {})
+require 'lazy'.setup(plugins, {})
 
-require'lualine'.setup()
-require'nvim-surround'.setup()
-require'onedark'.load()
-require'onedark'.setup {
+local cmp = require 'cmp'
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            vim.snippet.expand(args.body)
+        end,
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+    }, {
+        { name = 'buffer' },
+    })
+})
+
+require("tiny-inline-diagnostic").setup({
+    -- Style preset for diagnostic messages
+    -- Available options:
+    -- "modern", "classic", "minimal", "powerline",
+    -- "ghost", "simple", "nonerdfont", "amongus"
+    preset = "modern",
+})
+
+require 'lualine'.setup()
+require 'nvim-surround'.setup()
+require 'onedark'.load()
+require 'onedark'.setup {
     style = 'warm',
 }
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
     ensure_installed = 'all',
     auto_install = true,
     highlight = {
         enable = true,
     },
 }
-require'gitsigns'.setup()
+require 'gitsigns'.setup()
+
+require 'lspconfig'.pyright.setup {}
+
+require'marks'.setup()
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup {
@@ -98,21 +138,16 @@ vim.g.maplocalleader = ','
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
+    callback = function(args)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
+        local opts = { buffer = args.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -152,6 +187,7 @@ vim.o.hidden = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.colorcolumn = '81'
 vim.o.encoding = 'utf-8'
+vim.o.winborder = 'rounded'
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -162,8 +198,8 @@ map('n', '<leader>v', '<Cmd>e $MYVIMRC<CR>', opts)
 map('n', '<leader>w', '<Cmd>BufferClose<CR>', opts)
 map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
 
-map('n', ',,', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '..', '<Cmd>BufferNext<CR>', opts)
+map('n', '<leader>,', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<leader>.', '<Cmd>BufferNext<CR>', opts)
 
 map('n', '<leader>q', '<Cmd>ccl<CR>', opts)
 map('n', '<C-n>', '<Cmd>nohlsearch<CR>', opts)
