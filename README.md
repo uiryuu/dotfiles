@@ -1,7 +1,7 @@
 # Installation
 ``` bash
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-omf install bob-the-fish pyenv rbenv brew
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source 
+fisher install jorgebucaran/fisher oh-my-fish/bobthefish oh-my-fish/plugin-brew
 brew install tpm stow
 stow . --dotfiles
 ```
