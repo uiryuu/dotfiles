@@ -1,24 +1,20 @@
 [font]
+size = 14.0
 normal.family = "SauceCodePro Nerd Font Mono"
 bold.family = "SauceCodePro Nerd Font Mono"
 italic.family = "SauceCodePro Nerd Font Mono"
 bold_italic.family = "SauceCodePro Nerd Font Mono"
 
-size = 14.0
-
 [window]
 opacity = 0.8
 blur = true
 dimensions = {columns = 150, lines = 40}
-
 decorations_theme_variant = "Dark"
+resize_increments = true
+option_as_alt = "Both"
 
 [selection]
 save_to_clipboard = true
 
-[cursor]
-# style = {shape = "Beam", blinking = "Never"}
-
 [env]
 TERM = "xterm-256color"
-

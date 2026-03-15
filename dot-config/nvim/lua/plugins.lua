@@ -19,21 +19,45 @@ local plugins = {
     { 'neovim/nvim-lspconfig' },
     { 'lewis6991/gitsigns.nvim' },
     { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-    { 'nvim-neo-tree/neo-tree.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim' } },
     { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
     { 'kylechui/nvim-surround', event = 'VeryLazy' },
     { 'nvim-treesitter/nvim-treesitter', lazy = false, build = ':TSUpdate' },
     { 'rachartier/tiny-inline-diagnostic.nvim', event = 'LspAttach', priority = 1000 },
     { 'saghen/blink.cmp', version = '1.*' },
+    { 'folke/which-key.nvim', event = 'VeryLazy' },
+    { 'stevearc/oil.nvim', dependencies = { 'nvim-mini/mini.icons' }, lazy = false },
+    { 'benomahony/oil-git.nvim', dependencies = { 'stevearc/oil.nvim' } },
 }
 
 require 'lazy'.setup(plugins, {})
 
 -- Plugin settings
-require 'bufferline'.setup()
-
-require 'lualine'.setup { options = { theme = 'onedark' } }
 require 'tiny-inline-diagnostic'.setup { preset = 'powerline' }
+
+require 'lualine'.setup {
+    options = { theme = 'onedark' },
+    sections = {
+        lualine_c = {
+            { 'filename', path = 2 }
+        }
+    }
+}
+
+require 'bufferline'.setup {
+    options = {
+        separator_style = 'slant',
+    }
+}
+
+require 'oil'.setup {
+    default_file_explorer = true,
+    columns = { 'icon' },
+    float = {
+        max_width = 0.6,
+        max_height = 0.6,
+        win_options = { winblend = 1 },
+    }
+}
 
 require 'blink.cmp'.setup {
     keymap = { preset = 'default' },

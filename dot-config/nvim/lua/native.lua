@@ -13,7 +13,6 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.modeline = true
-vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.scrolloff = 7
 vim.o.splitbelow = true
