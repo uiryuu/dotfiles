@@ -27,11 +27,13 @@ local plugins = {
     { 'folke/which-key.nvim', event = 'VeryLazy' },
     { 'stevearc/oil.nvim', dependencies = { 'nvim-mini/mini.icons' }, lazy = false },
     { 'benomahony/oil-git.nvim', dependencies = { 'stevearc/oil.nvim' } },
+    { 'matbme/jabs.nvim' },
 }
 
 require 'lazy'.setup(plugins, {})
 
 -- Plugin settings
+require 'jabs'.setup {}
 require 'tiny-inline-diagnostic'.setup { preset = 'powerline' }
 
 require 'lualine'.setup {

@@ -1,14 +1,12 @@
-vim.lsp.enable({ 'lua_ls', 'pyright' })
+vim.lsp.enable { 'lua_ls', 'pyright' }
 
-vim.diagnostic.config({
-    virtual_lines = false,
-    virtual_text = false,
-})
+vim.diagnostic.config { virtual_lines = false, virtual_text = false }
+
+vim.cmd.colorscheme 'onedark'
 
 vim.o.number = true
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd.colorscheme('onedark')
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -31,3 +29,5 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.colorcolumn = '81'
 vim.o.encoding = 'utf-8'
 vim.o.winborder = 'rounded'
+vim.o.list = true
+vim.opt.listchars = { lead = "·", tab = "→ ", trail = "·" }
