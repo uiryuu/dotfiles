@@ -14,7 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    { 'tpope/vim-commentary' },
     { 'navarasu/onedark.nvim' },
     { 'neovim/nvim-lspconfig' },
     { 'lewis6991/gitsigns.nvim' },

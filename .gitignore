@@ -24,3 +24,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+dot-config/nvim/lazy-lock.json
